@@ -53,14 +53,8 @@ const data = {
     
     data.nbInterventionsParPDQ.sort(function compare(a, b)
      {
-        if (a.nbInterventions < b.nbInterventions)
-           return -1;
-        if (a.nbInterventions > b.nbInterventions )
-           return 1;
-        return 0;
+        return a.nbInterventions < b.nbInterventions;
       });
     
     console.log(data);
     maximum(data);
-    
-console.log("Hello World")
