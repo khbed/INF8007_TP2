@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 const data = {
     dateDebut : "2015",
     dateMAJ : "03-12-2020",
@@ -63,3 +64,6 @@ const data = {
     console.log(data);
     maximum(data);
     
+=======
+console.log("Hello World")
+>>>>>>> Stashed changes
