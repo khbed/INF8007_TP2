@@ -3,14 +3,14 @@ let boutonCreation = document.getElementById("add-submit");
 
 boutonCreation.setAttribute("disabled", true);
 
-function majBouton(date, bouton) {
-    if(bouton.disabled && date.value != ''){
-        bouton.deleteAttribute("disabled");
+
+let majBouton = () => {
+    if (boutonCreation.disabled && dateRapport.value != '') {
+        boutonCreation.removeAttribute("disabled");
     }
-    if(bouton.disabled==false && date.value == ''){
-        bouton.setAttribute("disabled", true);
+    if (boutonCreation.disabled == false && dateRapport.value == '') {
+        boutonCreation.setAttribute("disabled", true);
     }
-    console.log("test")
 }
 
-window.setInterval(majBouton(dateRapport, boutonCreation), 1000);
+dateRapport.addEventListener("change", majBouton);
