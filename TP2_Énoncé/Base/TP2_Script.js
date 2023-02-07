@@ -66,32 +66,6 @@ for (let intervention of data.nbInterventionsParPDQ){
 
 
     
-<<<<<<< Updated upstream
-// function compare(a, b) {
-//     if (a.nbInterventions < b.nbInterventions){
-//         return -1;
-//     }
-//     else if(a.nbInterventions > b.nbInterventions) {
-//         return 1;
-//     }
-//     return 0;
-// }
-
-// data.nbInterventionsParPDQ.sort(compare);
-
-// console.log(data);
-
-// let tableauInterventions = document.getElementById("interventions-par-poste");
-
-// let tableRow = document.createElement("tr");
-// let tableDiv = document.createElement("td");
-// let text = document.createTextNode("test");
-
-// tableDiv.appendChild(text);
-// tableRow.appendChild(tableDiv);
-// tableauInterventions.appendChild(tableRow);
-
-=======
     function maximum (data)
     {
         let tab = new Array();
@@ -120,4 +94,3 @@ for (let intervention of data.nbInterventionsParPDQ){
     
     console.log(data);
     maximum(data);
->>>>>>> Stashed changes
