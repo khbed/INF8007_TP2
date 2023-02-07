@@ -66,6 +66,7 @@ for (let intervention of data.nbInterventionsParPDQ){
 
 
     
+<<<<<<< Updated upstream
 // function compare(a, b) {
 //     if (a.nbInterventions < b.nbInterventions){
 //         return -1;
@@ -90,3 +91,33 @@ for (let intervention of data.nbInterventionsParPDQ){
 // tableRow.appendChild(tableDiv);
 // tableauInterventions.appendChild(tableRow);
 
+=======
+    function maximum (data)
+    {
+        let tab = new Array();
+        let maximum;
+        for (i = 0; i <data.nbInterventionsParPDQ.length; i++)
+        {
+            tab[i] = data.nbInterventionsParPDQ[i].nbInterventions;
+        }
+        maximum=Math.max(...tab);
+        return maximum;
+    }
+    
+    function median(data)
+    {
+        data.nbInterventionsParPDQ = data.nbInterventionsParPDQ.sort(function compare(a, b)
+     {
+            return a.nbInterventions < b.nbInterventions;
+      });
+    let longueurTable = data.nbInterventionsParPDQ.nbInterventions.length;
+    let valeurMedian = Math.floor(longueurTable/2);
+    return valeurMedian;   
+    }
+    
+
+    
+    
+    console.log(data);
+    maximum(data);
+>>>>>>> Stashed changes
