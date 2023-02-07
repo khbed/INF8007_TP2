@@ -37,24 +37,56 @@ const data = {
     { "PDQ":50, "nbInterventions": 1080, "Emplacement":"Métro de Montréal"},
     { "PDQ":55, "nbInterventions": 62, "Emplacement":"Aéroport international Pierre-Elliott-Trudeau de Montréal"},
     ]
-    };
+};
+
+let tableauInterventions = document.getElementById("interventions-par-poste");
+
+for (let intervention of data.nbInterventionsParPDQ){
+
+    let tableRow = document.createElement("tr");
+
+    let pdqDiv = document.createElement("td");
+    let nbInterventionsDiv = document.createElement("td");
+    let emplacementDiv = document.createElement("td");
+
+    let pdqText = document.createTextNode(intervention.PDQ);
+    pdqDiv.appendChild(pdqText);
+
+    let nbInterventionsText = document.createTextNode(intervention.nbInterventions);
+    nbInterventionsDiv.appendChild(nbInterventionsText);
+
+    let emplacementText = document.createTextNode(intervention.Emplacement);
+    emplacementDiv.appendChild(emplacementText);
+
+    tableRow.appendChild(pdqDiv);
+    tableRow.appendChild(nbInterventionsDiv);
+    tableRow.appendChild(emplacementDiv);
+    tableauInterventions.appendChild(tableRow);
+}
+
+
     
-    function maximum (data)
-    {
-        let tab = new Array();
-        let maximum;
-        for (i = 0; i <data.nbInterventionsParPDQ.length; i++)
-        {
-            tab[i] = data.nbInterventionsParPDQ[i].nbInterventions;
-        }
-        maximum=Math.max(...tab);
-        return maximum;
-    }
-    
-    data.nbInterventionsParPDQ.sort(function compare(a, b)
-     {
-        return a.nbInterventions < b.nbInterventions;
-      });
-    
-    console.log(data);
-    maximum(data);
+// function compare(a, b) {
+//     if (a.nbInterventions < b.nbInterventions){
+//         return -1;
+//     }
+//     else if(a.nbInterventions > b.nbInterventions) {
+//         return 1;
+//     }
+//     return 0;
+// }
+
+// data.nbInterventionsParPDQ.sort(compare);
+
+// console.log(data);
+
+// let tableauInterventions = document.getElementById("interventions-par-poste");
+
+// let tableRow = document.createElement("tr");
+// let tableDiv = document.createElement("td");
+// let text = document.createTextNode("test");
+
+// tableDiv.appendChild(text);
+// tableRow.appendChild(tableDiv);
+// tableauInterventions.appendChild(tableRow);
+
