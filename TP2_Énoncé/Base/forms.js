@@ -1,36 +1,42 @@
 let dateRapport = document.getElementById("add_date_incident");
 let boutonCreation = document.getElementById("add-submit");
+
+let formulaireModifier = document.getElementById("form-modify-alter");
 let texteModifier = document.getElementById("modify_no_intervention");
 let boutonChercheModifier = document.getElementById("modify-search-submit");
 let dateModifier = document.getElementById("modify_date_incident");
 let boutonModifier = document.getElementById("modify-alter-submit");
+
+let formulaireSupprimer = document.getElementById("form-remove");
 let texteSupprimer = document.getElementById("remove_no_intervention");
 let boutonChercheSupprimer = document.getElementById("remove-search-submit");
 let boutonSupprimer = document.getElementById("remove-submit");
 
-boutonCreation.setAttribute("disabled", true);
-boutonCreation.style.cursor="default"
 
-boutonModifier.setAttribute("disabled", true);
-boutonModifier.style.cursor="default"
+let desactiveBouton = (bouton) => {
+    bouton.setAttribute("disabled", true);
+    bouton.style.cursor="default"
+}
 
-boutonChercheModifier.setAttribute("disabled", true);
-boutonChercheModifier.style.cursor="default"
+let activeBouton = (bouton) => {
+    bouton.removeAttribute("disabled");
+    bouton.style.cursor="pointer"
+}
 
-boutonChercheSupprimer.setAttribute("disabled", true);
-boutonChercheSupprimer.style.cursor="default"
+desactiveBouton(boutonCreation);
+desactiveBouton(boutonModifier);
+desactiveBouton(boutonChercheModifier);
+desactiveBouton(boutonChercheSupprimer);
 
-document.getElementById("form-modify-alter").style.display = "none";
-document.getElementById("form-remove").style.display = "none";
+formulaireModifier.style.display = "none";
+formulaireSupprimer.style.display = "none";
 
 let majBouton = (bouton,text) => {
     if (bouton.disabled && text.value != '') {
-        bouton.removeAttribute("disabled");
-        bouton.style.cursor="pointer"
+        activeBouton(bouton)
     }
     if (bouton.disabled == false && text.value == '') {
-        bouton.setAttribute("disabled", true);
-        bouton.style.cursor="default"
+        desactiveBouton(bouton)
     }
 }
 
@@ -39,28 +45,27 @@ texteModifier.addEventListener("input", function(){ majBouton(boutonChercheModif
 dateModifier.addEventListener("input", function(){ majBouton(boutonModifier, dateModifier); });
 texteSupprimer.addEventListener("input", function(){ majBouton(boutonChercheSupprimer, texteSupprimer); });
 
+
 boutonChercheModifier.onclick = function() {
     window.location='#nav-modify';
-    document.getElementById("form-modify-alter").style.display = "Initial";
+    formulaireModifier.style.display = "Initial";
 }
 
 boutonModifier.onclick = function() {
     window.location='#nav-modify';
-    document.getElementById("form-modify-alter").style.display = "none";
+    formulaireModifier.style.display = "none";
     texteModifier.value='';
-    boutonChercheModifier.setAttribute("disabled", true);
-    boutonChercheModifier.style.cursor="default"
+    desactiveBouton(boutonChercheModifier);
 }
 
 boutonChercheSupprimer.onclick = function() {
     window.location='#nav-remove';
-    document.getElementById("form-remove").style.display = "Initial";
+    formulaireSupprimer.style.display = "Initial";
 }
 
 boutonSupprimer.onclick = function() {
     window.location='#nav-remove';
-    document.getElementById("form-remove").style.display = "none";
+    formulaireSupprimer.style.display = "none";
     texteSupprimer.value='';
-    boutonChercheSupprimer.setAttribute("disabled", true);
-    boutonChercheSupprimer.style.cursor="default"
+    desactiveBouton(boutonChercheSupprimer);
 }
