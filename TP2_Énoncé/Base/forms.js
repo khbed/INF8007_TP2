@@ -48,24 +48,24 @@
 
 
     boutonChercheModifier.onclick = function() {
-        window.location='#nav-modify';
+        window.location="TP2_ NomPrénom.html#nav-modify"
         formulaireModifier.style.display = "Initial";
+        window.location.search=texteModifier.value;
     }
 
     boutonModifier.onclick = function() {
-        window.location='#nav-modify';
         formulaireModifier.style.display = "none";
         texteModifier.value='';
         desactiveBouton(boutonChercheModifier);
     }
 
     boutonChercheSupprimer.onclick = function() {
-        window.location='#nav-remove';
+        window.location="TP2_ NomPrénom.html#nav-delete"
         formulaireSupprimer.style.display = "Initial";
+        window.location.search=texteModifier.value;
     }
 
     boutonSupprimer.onclick = function() {
-        window.location='#nav-remove';
         formulaireSupprimer.style.display = "none";
         texteSupprimer.value='';
         desactiveBouton(boutonChercheSupprimer);
