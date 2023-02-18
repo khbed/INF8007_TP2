@@ -14,6 +14,14 @@
     let boutonSupprimer = document.getElementById("remove-submit");
 
 
+    
+    /*boutonChercheModifier.setAttribute("onsubmit", submitFormulaire(SubmitEvent) {
+        SubmitEvent.preventDefault()
+    });*/
+
+
+
+
     let desactiveBouton = (bouton) => {
         bouton.setAttribute("disabled", true);
         bouton.style.cursor="default"

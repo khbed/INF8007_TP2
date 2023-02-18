@@ -11,6 +11,7 @@
             type : "nav-link"
         };
 
+
         lienRapport.addEventListener("click", ()=> {
             window.location.hash = "#nav-report";
             navigateur.lieu=lienRapport;
@@ -24,13 +25,13 @@
         });
 
         modification.addEventListener("click", ()=> {
-            window.location.hash = "#nav-modify";
+            window.location.href = "TP2_Base.html?#nav-modify";
             navigateur.lieu=modification;
             navigateur.type="dropdown-item";
         });
 
         retrait.addEventListener("click", ()=> {
-            window.location.hash = "#nav-remove";
+            window.location.href = "TP2_Base.html?#nav-remove";
             navigateur.lieu=retrait;
             navigateur.type="dropdown-item";
         });
@@ -66,7 +67,7 @@
                 case "#nav-modify":
                     tableDeroulante.className = "nav-link dropdown-toggle active"
                     deactivate(navigateur);
-                    window.location.href = "TP2_Base.html#nav-modify";
+                    window.location.href = "TP2_Base.html?#nav-modify";
                     navigateur.type="dropdown-item";
                     activate(modification);
                     navigateur.lieu=modification;
@@ -74,7 +75,7 @@
                 case "#nav-remove":
                     tableDeroulante.className = "nav-link dropdown-toggle active"
                     deactivate(navigateur);
-                    window.location.href = "TP2_Base.html#nav-remove";
+                    window.location.href = "TP2_Base.html?#nav-remove";
                     navigateur.type="dropdown-item";
                     activate(retrait);
                     navigateur.lieu=retrait;
@@ -97,6 +98,6 @@
                     break;
             }
         }
-        addEventListener('hashchange', rediriger);
+        rediriger();
     })
 })()
