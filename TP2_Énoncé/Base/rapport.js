@@ -64,7 +64,7 @@
     window.addEventListener("load", ()=>{
         remplirTableau();
         ajouterTotal();
-        AjouterMedian();
+        window.setTimeout(AjouterMedian, 1000);
     })
 })()
 
