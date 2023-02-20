@@ -64,23 +64,33 @@
     window.addEventListener("load", ()=>{
         remplirTableau();
         ajouterTotal();
-        AjouterMedian();
+        window.setTimeout(() => {surligner()},1000);
     })
 })()
 
 // ----------------------------------------------- Code Sébastien Dupuis 16/02/2023 ---------------------------------------
-function median(data)
-{
-    let tableMedian =  data.nbInterventionsParPDQ.length / 2;
-    return data.nbInterventionsParPDQ.sort(compare)[tableMedian]
-}
-
 function compare (a,b)
 {
     if(a.nbInterventions < b.nbInterventions){return 1 }
     else if (a.nbInterventions > b.nbInterventions) {return -1}
     else return 0;
 }    
+
+function median(data)
+{
+    var MonTableau = [];
+    let length = data.nbInterventionsParPDQ.length
+    let tableMedian =  data.nbInterventionsParPDQ.length / 2;
+    if (length %2 ==0){
+        MonTableau[0]=data.nbInterventionsParPDQ.sort(compare)[tableMedian].nbInterventions;
+        MonTableau[1]=data.nbInterventionsParPDQ.sort(compare)[tableMedian-1].nbInterventions;
+        return MonTableau;
+    }
+    else{
+        MonTableau[0]=data.nbInterventionsParPDQ.sort(compare)[Math.floor(tableMedian)-1];
+        return MonTableau;
+    }
+}
 
 function maximum (data)
 {
@@ -106,10 +116,19 @@ function minimum (data)
     return min;
 }
 
-function AjouterMedian()
+function calculerStatistiques(data){
+    var result = {
+        max : maximum(data),
+        min : minimum(data),
+        median : median(data)
+    };
+    return result;
+}
+
+function surligner()
 {
     let infoClass = {
-        classBadgeLight : "badge badge-light",
+        classBadgeLight : "badge badge-light ml-3",
         classWarning : "bg-warning",
         classDanger : "bg-danger",
         classSuccess : "bg-success"
@@ -131,14 +150,19 @@ function AjouterMedian()
 
         span.setAttribute("class", infoClass.classBadgeLight)
 
-        if (myceltext == median(data).nbInterventions){
-            //console.log(myceltext)
-            span.appendChild(texteSpanWarning);
-            myrow.setAttribute("class", infoClass.classWarning);
-            let myCelToChange = myrow.getElementsByTagName("td")[1];
-            myCelToChange.appendChild(span);
+        //Surligner median
+        for(var medianValue of calculerStatistiques(data).median){
+            if (myceltext == medianValue){
+                //console.log(myceltext)
+                span.appendChild(texteSpanWarning);
+                myrow.setAttribute("class", infoClass.classWarning);
+                let myCelToChange = myrow.getElementsByTagName("td")[1];
+                myCelToChange.appendChild(span);
+            }
         }
-        if (myceltext == maximum(data)){
+
+        // Surligner Maximum
+        if (myceltext == calculerStatistiques(data).max){
             span.appendChild(texteSpanDanger);
             myrow.setAttribute("class", infoClass.classDanger);
             let myCelToChangeColor = myrow.getElementsByTagName("td")[2];
@@ -146,7 +170,8 @@ function AjouterMedian()
             let myCelToChange = myrow.getElementsByTagName("td")[1];
             myCelToChange.appendChild(span);
         }
-        if (myceltext == minimum(data)){
+        // Surligner minimum
+        if (myceltext == calculerStatistiques(data).min){
             span.appendChild(texteSpanSuccess);
             myrow.setAttribute("class", infoClass.classSuccess);
             let myCelToChangeColor = myrow.getElementsByTagName("td")[2];
