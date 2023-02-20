@@ -13,15 +13,7 @@
     let boutonChercheSupprimer = document.getElementById("remove-search-submit");
     let boutonSupprimer = document.getElementById("remove-submit");
 
-
-    
-    /*boutonChercheModifier.setAttribute("onsubmit", submitFormulaire(SubmitEvent) {
-        SubmitEvent.preventDefault()
-    });*/
-
-
-
-
+    /* Fonction d'activation/désactivation des boutons */
     let desactiveBouton = (bouton) => {
         bouton.setAttribute("disabled", true);
         bouton.style.cursor="default"
@@ -32,14 +24,17 @@
         bouton.style.cursor="pointer"
     }
 
+    /* Désactivation initiale des boutons */
     desactiveBouton(boutonCreation);
     desactiveBouton(boutonModifier);
     desactiveBouton(boutonChercheModifier);
     desactiveBouton(boutonChercheSupprimer);
 
+    /* Formulaires cachés */
     formulaireModifier.style.display = "none";
     formulaireSupprimer.style.display = "none";
 
+    /* Fonction de mise à jour du statut du bouton */
     let majBouton = (bouton,text) => {
         if (bouton.disabled && text.value != '') {
             activeBouton(bouton)
@@ -49,14 +44,14 @@
         }
     }
 
+    /* Activation/désactivation des boutons "submit" selon la complétion des champs du formulaire associé */
     dateRapport.addEventListener("input", function(){ majBouton(boutonCreation, dateRapport); });
     texteModifier.addEventListener("input", function(){ majBouton(boutonChercheModifier, texteModifier); });
     dateModifier.addEventListener("input", function(){ majBouton(boutonModifier, dateModifier); });
     texteSupprimer.addEventListener("input", function(){ majBouton(boutonChercheSupprimer, texteSupprimer); });
 
-
+    /* Apparition/disparition des formulaires de modification/suppression à l'appui du bouton "submit" associé */
     boutonChercheModifier.onclick = function() {
-        window.location="TP2_ NomPrénom.html#nav-modify"
         formulaireModifier.style.display = "Initial";
         window.location.search=texteModifier.value;
     }
@@ -68,7 +63,6 @@
     }
 
     boutonChercheSupprimer.onclick = function() {
-        window.location="TP2_ NomPrénom.html#nav-delete"
         formulaireSupprimer.style.display = "Initial";
         window.location.search=texteModifier.value;
     }

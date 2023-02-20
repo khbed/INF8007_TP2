@@ -137,9 +137,9 @@ function surligner()
 {
     let infoClass = {
         classBadgeLight : "badge badge-light ml-3",
-        classWarning : "bg-warning",
-        classDanger : "bg-danger",
-        classSuccess : "bg-success"
+        classWarning : "bg-warning text-dark font-weight-bold",
+        classDanger : "bg-danger text-white font-weight-bold",
+        classSuccess : "bg-success text-white font-weight-bold"
     }
 
     let mytablebody = document.getElementsByTagName("tbody")[0];

@@ -11,7 +11,7 @@
             type : "nav-link"
         };
 
-
+        /* Changement du hash selon l'onglet cliqué */
         lienRapport.addEventListener("click", ()=> {
             window.location.hash = "#nav-report";
             navigateur.lieu=lienRapport;
@@ -42,6 +42,8 @@
             navigateur.type="nav-link";
         });
         
+
+        /* fonctions d'activation/désactivation des onglets */
         function activate(link){
             let linkDiv = document.getElementById(link.getAttribute("href").slice(1));
             link.className += " active";
@@ -54,6 +56,7 @@
             navDiv.className = "tab-pane fade"
         }
 
+        /* fonction de redirection selon l'hash de l'url */
         function rediriger(){
             switch(window.location.hash){
                 case "#nav-add":
@@ -98,6 +101,7 @@
                     break;
             }
         }
+        /* Redirection au chargement de la page */
         rediriger();
     })
 })()
