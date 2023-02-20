@@ -61,9 +61,17 @@
 
     }
 
+    function afficherDateMAJ() {
+        let majElement = document.getElementById("derniere-mise-a-jour");
+        let majText = document.createTextNode("* " + data.dateDebut + " à aujourd'hui, dernière mise à jour des données: " + data.dateMAJ);
+        majElement.appendChild(majText);
+
+    }
+
     window.addEventListener("load", ()=>{
         remplirTableau();
         ajouterTotal();
+        afficherDateMAJ();
         window.setTimeout(() => {surligner()}, 1000);
     })
 })()
